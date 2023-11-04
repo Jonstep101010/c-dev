@@ -9,9 +9,66 @@
 
     // General properties unrelated to the example follow...
     "remoteUser": "vscode",
-    "extensions": [
-        "editorconfig.editorconfig",
-        "streetsidesoftware.code-spell-checker",
-        "timonwong.shellcheck",
-    ]
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "ceedlingExplorer.projectPath": "${containerEnv:PROJ_DIR}",
+                "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } },
+				"terminal.integrated.defaultProfile.osx": "zsh",
+
+				// settings from local install
+				"doxdocgen.c.firstLine": "/**",
+				"doxdocgen.c.triggerSequence": "//**",
+				"workbench.colorTheme": "Monokai Classic",
+				"workbench.iconTheme": "Monokai Classic Icons",
+				"workbench.settings.applyToAllProfiles": [
+					"editor.renderWhitespace"
+				],
+				"grunt.autoDetect": "on",
+				"explorer.confirmDragAndDrop": false,
+				"settingsSync.ignoredExtensions": [
+					"golang.go",
+					"golang.go-nightly",
+					"github.remotehub",
+					"ms-vsliveshare.vsliveshare",
+					"ms-vscode.remote-repositories",
+					"ms-vscode-remote.remote-ssh",
+					"franneck94.c-cpp-runner",
+					"mariusvanwijk-joppekoers.codam-norminette-3",
+					"ms-vscode.cpptools-themes",
+					"numaru.vscode-ceedling-test-adapter",
+					"shd101wyy.markdown-preview-enhanced"
+				],
+				"files.autoSave": "afterDelay",
+				"go.toolsManagement.autoUpdate": true,
+				"window.commandCenter": false,
+				"gitlens.mode.active": "zen",
+				"chatgpt.lang": "en",
+				"explorer.confirmDelete": false,
+				"git.autofetch": true,
+				"extensions.ignoreRecommendations": true,
+				"github.copilot.enable": {
+					"*": false,
+					"plaintext": false,
+					"markdown": false,
+					"scminput": false,
+					"c": false
+				},
+				"editor.minimap.enabled": false,
+				"editor.detectIndentation": false,
+				"C_Cpp.doxygen.generatedStyle": "/**",
+				"C_Cpp.codeAnalysis.clangTidy.enabled": true,
+				"testExplorer.useNativeTesting": true,
+				"editor.wordWrap": "wordWrapColumn"
+			    },
+                "extensions": [
+                    "timonwong.shellcheck",
+                    "ms-vscode.cpptools",
+                    // ceedling vscode extensions
+                    "numaru.vscode-ceedling-test-adapter",
+                    "hbenl.vscode-test-explorer",
+                    "ms-vscode.test-adapter-converter"
+                ]
+            }
+    }
 }

@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "osx": {
+                "command": "make -C <path/to/makefile/dir>"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "linux": {
+                "command": "make -C ${env:PROJ_DIR}"
+            }
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "linux": {
+                "command": "cd ${env:PROJ_DIR} && ceedling",
+                "options": {
+                    "env": {
+                        "ceedling_projdir": "${env:PROJ_DIR}"
+                    }
+                }
+            },
+            "problemMatcher": []
+        }
+    ]
+}

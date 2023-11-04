@@ -5,23 +5,27 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - ARCH=${ARCH:?}
+        - SHELL=${SHELL:?}
+        - CEEDLING_V=${CEEDLING_V:?}
     volumes:
       - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
     command: sleep infinity
-    depends_on:
-      - example-service
+    # depends_on:
+    #   - example-service
     env_file:
       # If you need to access the WORKSPACE_* envars in the container
       - .env
 
   # Another container with access to the workspace files.
   # It serves the workspace files - http://example-service:8000
-  example-service:
-    image: python
-    working_dir: ${WORKSPACE_ROOT:?}
-    command: python -m http.server
-    volumes:
-      - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
+  # example-service:
+  #   image: python
+  #   working_dir: ${WORKSPACE_ROOT:?}
+  #   command: python -m http.server
+  #   volumes:
+  #     - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
 
 volumes:
   # $WORKSPACE_SOURCE is "devcontainer-volume" when the workspace is in a
