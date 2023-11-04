@@ -6,6 +6,9 @@
     "workspaceFolder": "/workspace",
     // Generate .devcontainer/.env containing WORKSPACE_* envars for docker-compose.yml
     "initializeCommand": ".devcontainer/gen-docker-compose-workspace-env.sh --container-workspace-folder '${containerWorkspaceFolder}' --local-workspace-folder '${localWorkspaceFolder}'",
+	"remoteEnv": {
+		"SHELL": "/bin/zsh"
+	},
 
     // General properties unrelated to the example follow...
     "remoteUser": "vscode",
@@ -14,7 +17,8 @@
             "settings": {
                 "ceedlingExplorer.projectPath": "${containerEnv:PROJ_DIR}",
                 "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } },
-				"terminal.integrated.defaultProfile.osx": "zsh",
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"terminal.integrated.cwd": "${containerEnv:PROJ_DIR}",
 
 				// settings from local install
 				"doxdocgen.c.firstLine": "/**",
@@ -29,26 +33,16 @@
 				"settingsSync.ignoredExtensions": [
 					"golang.go",
 					"golang.go-nightly",
-					"github.remotehub",
-					"ms-vsliveshare.vsliveshare",
-					"ms-vscode.remote-repositories",
-					"ms-vscode-remote.remote-ssh",
-					"franneck94.c-cpp-runner",
-					"mariusvanwijk-joppekoers.codam-norminette-3",
-					"ms-vscode.cpptools-themes",
-					"numaru.vscode-ceedling-test-adapter",
 					"shd101wyy.markdown-preview-enhanced"
 				],
 				"files.autoSave": "afterDelay",
 				"go.toolsManagement.autoUpdate": true,
 				"window.commandCenter": false,
 				"gitlens.mode.active": "zen",
-				"chatgpt.lang": "en",
 				"explorer.confirmDelete": false,
 				"git.autofetch": true,
 				"extensions.ignoreRecommendations": true,
 				"github.copilot.enable": {
-					"*": false,
 					"plaintext": false,
 					"markdown": false,
 					"scminput": false,
@@ -62,7 +56,12 @@
 				"editor.wordWrap": "wordWrapColumn"
 			    },
                 "extensions": [
-                    "timonwong.shellcheck",
+					"github.copilot-chat",
+					"tintinweb.vscode-inline-bookmarks",
+                    "DoKca.42-ft-count-line",
+					"kube.42header",
+
+					"timonwong.shellcheck",
                     "ms-vscode.cpptools",
                     // ceedling vscode extensions
                     "numaru.vscode-ceedling-test-adapter",
