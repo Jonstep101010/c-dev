@@ -1,3 +1,5 @@
+This is a modified version of H4l's [dev-container-docker-compose-volume-or-bind](https://github.com/h4l/dev-container-docker-compose-volume-or-bind) template for generating devcontainers that make use of docker-compose. License file has not been modified.
+### Original README:
 # Dev Container Example: Docker Compose with workspace in volume or bind mount
 
 ## Summary
