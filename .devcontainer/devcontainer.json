@@ -1,6 +1,6 @@
 // For format details, see https://aka.ms/devcontainer.json.
 {
-    "name": "Dev Container - Docker Compose Volume or Bind Example",
+    "name": "cproject",
     "dockerComposeFile": "docker-compose.yml",
     "service": "example-devcontainer",
     "workspaceFolder": "/workspace",
@@ -53,7 +53,11 @@
 				"C_Cpp.doxygen.generatedStyle": "/**",
 				"C_Cpp.codeAnalysis.clangTidy.enabled": true,
 				"testExplorer.useNativeTesting": true,
-				"editor.wordWrap": "wordWrapColumn"
+				"editor.wordWrap": "wordWrapColumn",
+				"editor.wordWrapColumn": 80,
+				"editor.tabSize": 4,
+				"C_Cpp.codeAnalysis.clangTidy.config": ".clang-tidy",
+				"C_Cpp.codeAnalysis.clangTidy.checks.enabled": ["*"]
 			    },
                 "extensions": [
 					"github.copilot-chat",
@@ -64,10 +68,17 @@
 					"timonwong.shellcheck",
                     "ms-vscode.cpptools",
                     // ceedling vscode extensions
+					"cschlosser.doxdocgen",
                     "numaru.vscode-ceedling-test-adapter",
                     "hbenl.vscode-test-explorer",
                     "ms-vscode.test-adapter-converter"
-                ]
+                ],
+				"workbench.editorAssociations": [
+					{
+						"viewType": "vscode.markdown.preview.editor",
+						"filenamePattern": "*.md"
+					}
+				]
             }
     }
 }

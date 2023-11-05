@@ -6,9 +6,12 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - ARCH=${ARCH:?}
-        - SHELL=${SHELL:?}
-        - CEEDLING_V=${CEEDLING_V:?}
+        # architecture of host, e.g. arm64, amd64
+        - ARCH=amd64
+        # turn on/off the use of ceedling
+        - BUILD_TESTING=true
+        # optional: ceedling version if modified
+        - CEEDLING_V=ceedling-0.32.0-6113249.gem
     volumes:
       - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
     command: sleep infinity
