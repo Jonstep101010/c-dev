@@ -15,15 +15,15 @@
     "customizations": {
         "vscode": {
             "settings": {
-                "ceedlingExplorer.projectPath": "${containerEnv:PROJ_DIR}",
+                "ceedlingExplorer.projectPath": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
                 "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } },
 				"terminal.integrated.defaultProfile.linux": "zsh",
-				"terminal.integrated.cwd": "${containerEnv:PROJ_DIR}",
+				"terminal.integrated.cwd": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
 
 				// settings from local install
 				"doxdocgen.c.firstLine": "/**",
 				"doxdocgen.c.triggerSequence": "//**",
-				"workbench.colorTheme": "Monokai Classic",
+				"workbench.colorTheme": "GitHub Dark",
 				"workbench.iconTheme": "Monokai Classic Icons",
 				"workbench.settings.applyToAllProfiles": [
 					"editor.renderWhitespace"
