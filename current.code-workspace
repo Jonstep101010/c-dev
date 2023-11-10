@@ -1,19 +1,14 @@
 {
 	"folders": [
 		{
-			"path": "philo"
-		},
-		{
 			"path": "."
 		}
 	],
 	"settings": {
 		"terminal.integrated.defaultProfile.linux": "zsh",
-		
 		"editor.insertSpaces": false,
 		"inline-bookmarks.view.showVisibleFilesOnly": false,
 		"editor.detectIndentation": false,
-		"ceedlingExplorer.shellPath": "/bin/zsh -c /opt/homebrew/lib/ruby/gems/3.2.0/bin/ceedling",
 		"C_Cpp.default.forcedInclude": ["**/**"],
 		"testExplorer.useNativeTesting": true,
 	},
