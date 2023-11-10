@@ -6,9 +6,17 @@
 #    By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/05 10:39:39 by jschwabe          #+#    #+#              #
-#    Updated: 2023/11/05 11:29:30 by jschwabe         ###   ########.fr        #
+#    Updated: 2023/11/10 12:27:36 by jschwabe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+init_docker: 42HOST | envars
+	@echo "init_docker: \033[1;31mrunning\033[0m"
+	chmod +x ./.devcontainer/setup/init_docker.sh && sh ./.devcontainer/setup/init_docker.sh
+
+42HOST:
+	$(ifeq (ls -l ~/goinfre/ | grep $(USER),),,echo "42HOST: \033[1;31mnot found\033[0m")
 
 info: envars devcontainers
 	@echo on 42 macs, run "\033[1;31m"make init_docker"\033[0m" to setup docker
@@ -20,10 +28,7 @@ envars:
 devcontainers:
 	@echo "\n\033[1;31mdevcontainers extension:\033[0m"
 	@echo "https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers\n"
-	
-
-init_docker:
-	chmod +x ./setup/init_docker.sh && sh ./setup/init_docker.sh
+	@echo or use the open menu [cmd + p] and type "ext install ms-vscode-remote.remote-containers"
 
 # add vscode code command to path without admin rights (run manually)
 vscodepath:
