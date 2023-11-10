@@ -8,7 +8,7 @@
         "name": "main",
         "type": "cppdbg", // c/c++ debugging
         "request": "launch", // launch or attach
-        "args": [], // arguments to the program
+        "args": ["4", "400", "300", "200"], // arguments to the program
         "stopAtEntry": true, // break at main?
         // "osx": {
         //     "cwd": "${workspaceFolder}/${env:PROJ_DIR}", // working directory of the target
