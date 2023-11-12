@@ -5,6 +5,7 @@ ARG base_img=mcr.microsoft.com/vscode/devcontainers/base:dev-bullseye
 FROM --platform=linux/${ARCH} ${base_img} AS builder_install
 RUN apt-get update --fix-missing && apt-get -y upgrade
 RUN apt-get install -y --no-install-recommends \
+	gnupg2 \
 	build-essential \
 	clang \
 	make \
@@ -14,7 +15,6 @@ RUN apt-get install -y --no-install-recommends \
 	curl \
 	cmake \
 	gcc \
-	g++-multilib \
 	locales \
 	gcovr \
 	wget \

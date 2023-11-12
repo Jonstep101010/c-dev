@@ -1,13 +1,13 @@
 version: "3.9"
 services:
   # vscode will connect to this service as the dev container
-  example-devcontainer:
+  cproject:
     build:
       context: .
       dockerfile: Dockerfile
       args:
         # architecture of host, e.g. arm64, amd64
-        - ARCH=amd64
+        - ARCH=arm64
         # turn on/off the use of ceedling
         - BUILD_TESTING=true
         # optional: ceedling version if modified
