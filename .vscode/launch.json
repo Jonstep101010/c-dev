@@ -8,7 +8,7 @@
         "name": "main",
         "type": "cppdbg", // c/c++ debugging
         "request": "launch", // launch or attach
-        "args": ["4", "400", "300", "200"], // arguments to the program
+        "args": ["2", "800", "200", "200"], // arguments to the program
         "stopAtEntry": true, // break at main?
         // "osx": {
         //     "cwd": "${workspaceFolder}/${env:PROJ_DIR}", // working directory of the target
@@ -26,5 +26,34 @@
             //     {"name": "env_name", "value": "env_value"},
             // ],
         // "targetArchitecture": "x86_64" // most likely x86_64 or arm64
-    }]
+    },
+	{
+		"name": "ceedlingExplorer",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${workspaceFolder}/${env:PROJ_DIR}/.build_test/test/out/test_set_philos/${command:ceedlingExplorer.debugTestExecutable}",
+		"args": [],
+		"stopAtEntry": false,
+		"cwd": "${workspaceFolder}/${env:PROJ_DIR}/",
+		"environment": [],
+		"externalConsole": false,
+		"MIMode": "gdb",
+		"miDebuggerPath": "/usr/bin/gdb",
+		"setupCommands": [
+			{
+				"description": "Enable pretty-printing for gdb",
+				"text": "-enable-pretty-printing",
+				"ignoreFailures": true
+			}
+		],
+		"debugConfiguration": {
+			"description": "Debug configuration to run during test debug.",
+			"type": "string",
+			"scope": "resource"
+		  },
+		"problemMatching": {
+			"mode": "gcc"
+		}
+	}
+	]
 }
