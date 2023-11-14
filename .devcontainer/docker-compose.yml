@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         # architecture of host, e.g. arm64, amd64
-        - ARCH=arm64
+        - ARCH=amd64
         # turn on/off the use of ceedling
         - BUILD_TESTING=true
         # optional: ceedling version if modified
