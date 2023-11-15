@@ -5,3 +5,5 @@ CHANGELOG.md
 .DS_Store
 
 philo/
+.devcontainer/.ssh
+.devcontainer/.ssh.pub
