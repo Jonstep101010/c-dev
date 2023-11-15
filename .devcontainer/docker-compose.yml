@@ -9,9 +9,10 @@ services:
         # architecture of host, e.g. arm64, amd64
         - ARCH=amd64
         # turn on/off the use of ceedling
-        - BUILD_TESTING=true
+        - BUILD_TESTING=false
         # optional: ceedling version if modified
         - CEEDLING_V=ceedling-0.32.0-6113249.gem
+        # - USERNAME=${USERNAME}
     volumes:
       - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
     command: sleep infinity
