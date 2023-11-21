@@ -1,7 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "philo"
+			"path": "philosophers"
 		},
 		{
 			"path": "."
@@ -16,10 +16,6 @@
 		"ceedlingExplorer.shellPath": "/bin/zsh -c /opt/homebrew/lib/ruby/gems/3.2.0/bin/ceedling",
 		"C_Cpp.default.forcedInclude": ["**/**"],
 		"testExplorer.useNativeTesting": true,
-		"files.associations": {
-			"set_philos.h": "c",
-			"philo.h": "c"
-		},
 	},
 	"extensions": {
 		"recommendations": [
