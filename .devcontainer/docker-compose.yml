@@ -13,6 +13,8 @@ services:
         # optional: ceedling version if modified
         - CEEDLING_V=ceedling-0.32.0-6113249.gem
         # - USERNAME=${USERNAME}
+        - BEAR_INSTALL=false
+        - BEAR_DLD=false
     volumes:
       - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
     command: sleep infinity

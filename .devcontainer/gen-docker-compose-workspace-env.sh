@@ -291,7 +291,4 @@ if [[ $NO_WRITE == false ]]; then
       chown -R "${USERID:?}:${GROUPID:?}" "${ENV_FILE_DIR:?}"/{.env,.env.d}
   fi
 fi
-
-git config --local gpg.format ssh
-# git config --global user.signingkey /workspace/.devcontainer/.ssh
-git config --global user.signingkey /workspace/.devcontainer/.ssh
+git config --global --add safe.directory /workspace
