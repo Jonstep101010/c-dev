@@ -291,4 +291,8 @@ if [[ $NO_WRITE == false ]]; then
       chown -R "${USERID:?}:${GROUPID:?}" "${ENV_FILE_DIR:?}"/{.env,.env.d}
   fi
 fi
-git config --global --add safe.directory /workspace
+
+git config --global user.email mail@jschwabe.site
+git config --global user.name jschwabe
+git config --local user.signingkey E15160284234BA07
+git config --global user.signingkey E15160284234BA07
