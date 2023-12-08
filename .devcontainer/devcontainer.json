@@ -26,7 +26,7 @@
                 "ceedlingExplorer.projectPath": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
                 "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } },
 				"terminal.integrated.defaultProfile.linux": "zsh",
-				"terminal.integrated.cwd": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
+				"terminal.integrated.cwd": "${containerWorkspaceFolder}/${containerEnv:ZSH_CWD}",
 
 				// settings from local install
 				"doxdocgen.c.firstLine": "/**",
