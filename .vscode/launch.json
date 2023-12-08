@@ -20,6 +20,18 @@
             "program": "${workspaceFolder}/${env:EXEC_NAME}", // name of target to run
             "MIMode": "gdb", // gdb or lldb
         },
+		"setupCommands":[
+			{
+				"description": "Follow child process instead of parent process after fork",
+				"text": "set follow-fork-mode child",
+				"ignoreFailures": false
+			},
+			{
+				"description": "After fork, both parent and child processess remain being debugged.",
+				"text": "set detach-on-fork off",
+				"ignoreFailures": false
+			},
+		],
         "externalConsole": false, // launch a new console?
         "preLaunchTask": "build", // name of task to run before this
         // "environment": [
