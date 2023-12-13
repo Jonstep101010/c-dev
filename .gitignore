@@ -12,3 +12,6 @@ philosophers
 Bear-3.1.3.zip
 
 .devcontainer/Bear-3.1.3/
+build
+.cache
+private/

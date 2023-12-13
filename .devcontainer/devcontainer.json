@@ -23,6 +23,9 @@
             "settings": {
 				"clangd.path": "/usr/bin/clangd",
 				"C_Cpp.intelliSenseEngine": "disabled",
+				"clangd.fallbackFlags": ["-I ${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}/include"],
+				"clangd.arguments": ["-I ${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}/include"],
+
                 "ceedlingExplorer.projectPath": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
                 "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } },
 				"terminal.integrated.defaultProfile.linux": "zsh",
