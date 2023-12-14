@@ -15,6 +15,10 @@
 		// "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
 		"source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
 	],
+	"features": {
+		"ghcr.io/devcontainers/features/ruby:1": {}
+	},
+	"postCreateCommand": "gem update && gem install ceedling && gem update --system 3.4.22",
 
     // General properties unrelated to the example follow...
     "remoteUser": "vscode",
@@ -23,8 +27,6 @@
             "settings": {
 				"clangd.path": "/usr/bin/clangd",
 				"C_Cpp.intelliSenseEngine": "disabled",
-				"clangd.fallbackFlags": ["-I ${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}/include"],
-				"clangd.arguments": ["-I ${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}/include"],
 
                 "ceedlingExplorer.projectPath": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
                 "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } },
@@ -82,7 +84,8 @@
 					"numaru.vscode-ceedling-test-adapter",
 					"hbenl.vscode-test-explorer",
 					"ms-vscode.test-adapter-converter",
-					"llvm-vs-code-extensions.vscode-clangd"
+					"llvm-vs-code-extensions.vscode-clangd",
+					"eamodio.gitlens"
 				],
 				"workbench.editorAssociations": [
 					{

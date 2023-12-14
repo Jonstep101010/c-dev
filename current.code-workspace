@@ -1,20 +1,29 @@
 {
 	"folders": [
 		{
-			"path": "philosophers"
+			"path": "minishell"
+		},
+		{
+			"path": "pipex"
 		},
 		{
 			"path": "."
+		},
+		{
+			"name": "CeedlingExample_Microchip",
+			"path": "CeedlingExample_Microchip"
+		},
+		{
+			"name": "lightway-core",
+			"path": "lightway-core"
 		}
 	],
 	"settings": {
 		"terminal.integrated.defaultProfile.linux": "zsh",
-		
 		"editor.insertSpaces": false,
 		"inline-bookmarks.view.showVisibleFilesOnly": false,
 		"editor.detectIndentation": false,
 		"ceedlingExplorer.shellPath": "/bin/zsh -c /opt/homebrew/lib/ruby/gems/3.2.0/bin/ceedling",
-		"C_Cpp.default.forcedInclude": ["**/**"],
 		"testExplorer.useNativeTesting": true,
 	},
 	"extensions": {
