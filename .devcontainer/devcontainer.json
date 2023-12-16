@@ -12,14 +12,9 @@
 	"mounts": [
 		// ... existing mounts ...
 	
-		// "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
+		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
 		"source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
 	],
-	"features": {
-		"ghcr.io/devcontainers/features/ruby:1": {}
-	},
-	"postCreateCommand": "gem update && gem install ceedling && gem update --system 3.4.22",
-
     // General properties unrelated to the example follow...
     "remoteUser": "vscode",
     "customizations": {
