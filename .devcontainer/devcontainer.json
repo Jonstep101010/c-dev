@@ -13,7 +13,6 @@
 		// ... existing mounts ...
 	
 		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
-		"source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
 	],
     // General properties unrelated to the example follow...
     "remoteUser": "vscode",
@@ -21,7 +20,7 @@
         "vscode": {
             "settings": {
 				"clangd.path": "/usr/bin/clangd",
-				"C_Cpp.intelliSenseEngine": "disabled",
+				"C_Cpp.intelliSenseEngine": "default",
 
                 "ceedlingExplorer.projectPath": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
                 "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } },

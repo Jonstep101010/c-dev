@@ -3,20 +3,6 @@
 		{
 			"path": "minishell"
 		},
-		{
-			"path": "pipex"
-		},
-		{
-			"path": "."
-		},
-		{
-			"name": "CeedlingExample_Microchip",
-			"path": "CeedlingExample_Microchip"
-		},
-		{
-			"name": "lightway-core",
-			"path": "lightway-core"
-		}
 	],
 	"settings": {
 		"terminal.integrated.defaultProfile.linux": "zsh",
