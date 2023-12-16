@@ -227,6 +227,11 @@ if [ "${INSTALL_RUBY_TOOLS}" = "true" ]; then
     # is installed by rvm, so handle this by using root's default gem in this case
     ROOT_GEM="$(which gem || echo "")"
     ${ROOT_GEM} install ${DEFAULT_GEMS}
+	echo "own tools"
+	${ROOT_GEM} update
+	${ROOT_GEM} update --system
+    ${ROOT_GEM} install ceedling
+	cd /opt/src/ && gem install --local ceedling && cd -
 fi
 
 # VS Code server usually first in the path, so silence annoying rvm warning (that does not apply) and then source it
