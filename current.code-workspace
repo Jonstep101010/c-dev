@@ -33,7 +33,6 @@
 		"clangd.arguments": [
 			"--header-insertion=iwyu"
 		],
-		"C_Cpp.intelliSenseEngine": "disabled",
 	},
 	"extensions": {
 		"recommendations": [
