@@ -16,3 +16,9 @@ build
 .cache
 private/
 minishell
+
+42_minishell_tester/
+
+minishell/
+
+pipex/
