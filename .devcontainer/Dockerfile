@@ -8,7 +8,6 @@ RUN apt-get install -y --no-install-recommends \
 	apt-utils \
 	make \
 	build-essential \
-	clang \
 	pkg-config \
 	unzip \
 	gcc \
@@ -24,16 +23,22 @@ RUN apt-get install -y --no-install-recommends \
 	gcovr \
 	wget \
 	clang-tidy \
-	llvm \
-	clangd-12 \
 	clang-format \
 	git
 
+# install dependencies & clang tools
+RUN	apt install -y lsb-release wget software-properties-common gnupg
+RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+
 # Install readline lib
 RUN apt-get install -y libreadline-dev
+
+# install ruby & ceedling (testing framework)
 COPY ceedling-0.32.0-6113249.gem /opt/src/
 COPY library-scripts/ruby-debian.sh /opt/src/scripts/ruby-debian.sh
 RUN /bin/bash -c '/opt/src/scripts/ruby-debian.sh'
+
+# install cmake
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-Linux-x86_64.sh \
 		-q -O /tmp/cmake-install.sh \
 		&& chmod u+x /tmp/cmake-install.sh \
