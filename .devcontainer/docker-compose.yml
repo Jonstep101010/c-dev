@@ -1,7 +1,6 @@
 version: "3.9"
 services:
-  # vscode will connect to this service as the dev container
-  cproject:
+  devcontainer:
     build:
       context: .
       dockerfile: Dockerfile
