@@ -8,6 +8,7 @@
 		}
 	],
 	"settings": {
+		"clangd.detectExtensionConflicts": true,
 		"terminal.integrated.defaultProfile.linux": "zsh",
 		
 		"editor.insertSpaces": false,
