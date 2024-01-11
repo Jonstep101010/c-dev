@@ -6,9 +6,6 @@
     "workspaceFolder": "/workspace",
     // Generate .devcontainer/.env containing WORKSPACE_* envars for docker-compose.yml
     "initializeCommand": ".devcontainer/gen-docker-compose-workspace-env.sh --container-workspace-folder '${containerWorkspaceFolder}' --local-workspace-folder '${localWorkspaceFolder}'",
-	"remoteEnv": {
-		"SHELL": "/bin/zsh"
-	},
 	"mounts": [
 		// ... existing mounts ...
 	
@@ -21,7 +18,6 @@
     "customizations": {
         "vscode": {
             "settings": {
-				"clangd.path": "/usr/bin/clangd",
 				"C_Cpp.intelliSenseEngine": "disabled",
 				"clangd.fallbackFlags": ["-I ${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}/include"],
 				"clangd.arguments": ["-I ${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}/include"],
@@ -68,8 +64,9 @@
 					"editor.wordWrapColumn": 80
 				},
 				"editor.tabSize": 4,
-				"C_Cpp.codeAnalysis.clangTidy.config": ".clang-tidy",
-				"C_Cpp.codeAnalysis.clangTidy.checks.enabled": ["*"]
+				"editor.insertSpaces": false,
+				"inline-bookmarks.view.showVisibleFilesOnly": false,
+				"C_Cpp.default.forcedInclude": ["**/**"]
 			    },
                 "extensions": [
 					"github.copilot-chat",
