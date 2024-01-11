@@ -1,7 +1,6 @@
 # these variables are only modified from the docker-compose.yml file
-ARG base_tag=bullseye
 ARG ARCH=amd64
-ARG base_img=mcr.microsoft.com/vscode/devcontainers/base:dev-${base_tag}
+ARG base_img=mcr.microsoft.com/vscode/devcontainers/base:dev-bullseye
 
 FROM --platform=linux/${ARCH} ${base_img} AS builder_install
 RUN apt-get update --fix-missing && apt-get -y upgrade
@@ -12,18 +11,23 @@ RUN apt-get install -y --no-install-recommends \
 	clang \
 	pkg-config \
 	unzip \
-	gnupg2 \
-	ca-certificates \
-	curl \
-	locales \
-	gcovr \
-	wget \
-	git \
-	zsh \
-	lsb-release \
-	software-properties-common \
-	bash \
-	libc6-dbg \
+	gcc
+
+# Install Ceedling if BUILD_TESTING is true
+ARG BUILD_TESTING=false
+ARG CEEDLING_V=ceedling-0.32.0-6113249.gem
+COPY ${CEEDLING_V} /tmp
+RUN if [ "$BUILD_TESTING" = "true" ]; then \
+		apt-get install -y --no-install-recommends ruby && \
+		gem update && \
+		gem install ceedling && \
+		cd /tmp && \
+		gem install --local ceedling; \
+	fi
+ENV RUBYOPT "-KU -E utf-8:utf-8"
+
+# WORKDIR /workspace/.devcontainer
+RUN apt-get install -y --no-install-recommends \
 	gnupg2 \
 	ca-certificates \
 	valgrind \
@@ -32,18 +36,19 @@ RUN apt-get install -y --no-install-recommends \
 	locales \
 	gcovr \
 	wget \
-	git \
-	lsb-release \
-	wget \
-	software-properties-common \
-	&& rm -rf /var/lib/apt/lists/*
+	clang-tidy \
+	llvm \
+	clangd \
+	clang-format \
+	git
 
 # install ruby & ceedling (testing framework)
-COPY ceedling-0.32.0-6113249.gem /opt/src/
 COPY library-scripts/ruby-debian.sh /opt/src/scripts/ruby-debian.sh
+WORKDIR /opt/src
+COPY ceedling-0.32.0-6113249.gem /opt/src/
 ARG RUBY_VERSION=3.2.2
 ENV VERSION=${RUBY_VERSION}
-RUN /bin/bash -c '/opt/src/scripts/ruby-debian.sh'
+RUN bash -c './ruby-debian.sh'
 
 # install dependencies & clang tools
 ARG base_tag=bullseye
