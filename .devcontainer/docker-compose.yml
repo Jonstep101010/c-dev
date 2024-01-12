@@ -6,14 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        # architecture of host, e.g. arm64, amd64
         - ARCH=amd64
-        # turn on/off the use of ceedling
-        - BUILD_TESTING=true
-        # optional: ceedling version if modified
-        - CEEDLING_V=ceedling-0.32.0-6113249.gem
         # - USERNAME=${USERNAME}
-        - BEAR_INSTALL=true
     volumes:
       - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
     command: sleep infinity
@@ -21,7 +15,7 @@ services:
     #   - example-service
     env_file:
       # If you need to access the WORKSPACE_* envars in the container
-      - .env
+      - .env 
 
   # Another container with access to the workspace files.
   # It serves the workspace files - http://example-service:8000

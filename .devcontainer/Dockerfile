@@ -8,25 +8,11 @@ RUN apt-get install -y --no-install-recommends \
 	apt-utils \
 	make \
 	build-essential \
-	clang \
 	pkg-config \
 	unzip \
-	gcc
+	gcc \
+	bash
 
-# Install Ceedling if BUILD_TESTING is true
-ARG BUILD_TESTING=false
-ARG CEEDLING_V=ceedling-0.32.0-6113249.gem
-COPY ${CEEDLING_V} /tmp
-RUN if [ "$BUILD_TESTING" = "true" ]; then \
-		apt-get install -y --no-install-recommends ruby && \
-		gem update && \
-		gem install ceedling && \
-		cd /tmp && \
-		gem install --local ceedling; \
-	fi
-ENV RUBYOPT "-KU -E utf-8:utf-8"
-
-# WORKDIR /workspace/.devcontainer
 RUN apt-get install -y --no-install-recommends \
 	gnupg2 \
 	ca-certificates \
@@ -37,7 +23,26 @@ RUN apt-get install -y --no-install-recommends \
 	gcovr \
 	wget \
 	clang-tidy \
-	llvm \
-	clangd \
 	clang-format \
 	git
+
+# install dependencies & clang tools
+RUN	apt install -y lsb-release wget software-properties-common gnupg
+RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+
+# Install readline lib
+RUN apt-get install -y libreadline-dev
+
+# install ruby & ceedling (testing framework)
+COPY ceedling-0.32.0-6113249.gem /opt/src/
+COPY library-scripts/ruby-debian.sh /opt/src/scripts/ruby-debian.sh
+RUN /bin/bash -c '/opt/src/scripts/ruby-debian.sh'
+
+# install cmake
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-Linux-x86_64.sh \
+		-q -O /tmp/cmake-install.sh \
+		&& chmod u+x /tmp/cmake-install.sh \
+		&& mkdir /opt/cmake-3.28.1 \
+		&& /tmp/cmake-install.sh --skip-license --prefix=/opt/cmake-3.28.1 \
+		&& rm /tmp/cmake-install.sh \
+		&& ln -s /opt/cmake-3.28.1/bin/* /usr/bin
