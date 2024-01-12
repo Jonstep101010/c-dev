@@ -23,7 +23,7 @@
                 "isDefault": true
             },
             "linux": {
-                "command": "cd ${env:PROJ_DIR} && ceedling",
+                "command": "cd ${env:PROJ_DIR} && cd include/libft && ceedling release && cd ../.. && ceedling",
                 "options": {
                     "env": {
                         "ceedling_projdir": "${env:PROJ_DIR}"

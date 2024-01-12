@@ -29,3 +29,4 @@ RUN gem install ceedling
 RUN cd /opt/src && gem install --local ceedling
 
 # install additional tools...
+RUN apt-get install -y libreadline-dev
