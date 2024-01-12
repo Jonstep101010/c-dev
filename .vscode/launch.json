@@ -44,7 +44,7 @@
 		"name": "ceedlingExplorer",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "${workspaceFolder}/${env:PROJ_DIR}/.build_test/test/out/test_set_philos/${command:ceedlingExplorer.debugTestExecutable}",
+		"program": "${workspaceFolder}/${env:PROJ_DIR}/build/test/out/${command:ceedlingExplorer.debugTestExecutable}",
 		"args": [],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}/${env:PROJ_DIR}/",
@@ -59,14 +59,14 @@
 				"ignoreFailures": true
 			}
 		],
-		"debugConfiguration": {
-			"description": "Debug configuration to run during test debug.",
-			"type": "string",
-			"scope": "resource"
-		  },
-		"problemMatching": {
-			"mode": "gcc"
-		}
+	// 	"debugConfiguration": {
+	// 		"description": "Debug configuration to run during test debug.",
+	// 		"type": "string",
+	// 		"scope": "resource"
+	// 	  },
+	// 	"problemMatching": {
+	// 		"mode": "gcc"
+	// 	}
 	}
 	]
 }

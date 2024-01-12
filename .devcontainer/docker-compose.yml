@@ -15,7 +15,7 @@ services:
     #   - example-service
     env_file:
       # If you need to access the WORKSPACE_* envars in the container
-      - .env
+      - .env 
 
   # Another container with access to the workspace files.
   # It serves the workspace files - http://example-service:8000
