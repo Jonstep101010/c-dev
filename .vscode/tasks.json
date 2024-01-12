@@ -12,7 +12,7 @@
                 "isDefault": true
             },
             "linux": {
-                "command": "make -C ${env:PROJ_DIR}"
+                "command": "cd ${env:PROJ_DIR} && ceedling release"
             }
         },
         {

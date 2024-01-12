@@ -2,83 +2,53 @@
 {
     "name": "cproject",
     "dockerComposeFile": "docker-compose.yml",
-    "service": "example-devcontainer",
+    "service": "cproject",
     "workspaceFolder": "/workspace",
     // Generate .devcontainer/.env containing WORKSPACE_* envars for docker-compose.yml
     "initializeCommand": ".devcontainer/gen-docker-compose-workspace-env.sh --container-workspace-folder '${containerWorkspaceFolder}' --local-workspace-folder '${localWorkspaceFolder}'",
-	"remoteEnv": {
-		"SHELL": "/bin/zsh"
-	},
+	"mounts": [
+		// ... existing mounts ...
+		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
+		"source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
+	],
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        }
+    },
 
     // General properties unrelated to the example follow...
     "remoteUser": "vscode",
     "customizations": {
         "vscode": {
             "settings": {
+				"C_Cpp.intelliSenseEngine": "disabled",
                 "ceedlingExplorer.projectPath": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
                 "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } },
 				"terminal.integrated.defaultProfile.linux": "zsh",
-				"terminal.integrated.cwd": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
-
-				// settings from local install
-				"doxdocgen.c.firstLine": "/**",
-				"doxdocgen.c.triggerSequence": "//**",
-				"workbench.colorTheme": "GitHub Dark",
-				"workbench.iconTheme": "Monokai Classic Icons",
-				"workbench.settings.applyToAllProfiles": [
-					"editor.renderWhitespace"
-				],
-				"grunt.autoDetect": "on",
-				"explorer.confirmDragAndDrop": false,
-				"settingsSync.ignoredExtensions": [
-					"golang.go",
-					"golang.go-nightly",
-					"shd101wyy.markdown-preview-enhanced"
-				],
-				"files.autoSave": "afterDelay",
-				"go.toolsManagement.autoUpdate": true,
-				"window.commandCenter": false,
-				"gitlens.mode.active": "zen",
-				"explorer.confirmDelete": false,
-				"git.autofetch": true,
-				"extensions.ignoreRecommendations": true,
-				"github.copilot.enable": {
-					"plaintext": false,
-					"markdown": false,
-					"scminput": false,
-					"c": false
-				},
-				"editor.minimap.enabled": false,
-				"editor.detectIndentation": false,
-				"C_Cpp.doxygen.generatedStyle": "/**",
-				"C_Cpp.codeAnalysis.clangTidy.enabled": true,
-				"testExplorer.useNativeTesting": true,
-				"editor.wordWrap": "wordWrapColumn",
-				"editor.wordWrapColumn": 80,
-				"editor.tabSize": 4,
-				"C_Cpp.codeAnalysis.clangTidy.config": ".clang-tidy",
-				"C_Cpp.codeAnalysis.clangTidy.checks.enabled": ["*"]
-			    },
-                "extensions": [
-					"github.copilot-chat",
-					"tintinweb.vscode-inline-bookmarks",
-                    "DoKca.42-ft-count-line",
-					"kube.42header",
-
-					"timonwong.shellcheck",
-                    "ms-vscode.cpptools",
-                    // ceedling vscode extensions
-					"cschlosser.doxdocgen",
-                    "numaru.vscode-ceedling-test-adapter",
-                    "hbenl.vscode-test-explorer",
-                    "ms-vscode.test-adapter-converter"
-                ],
-				"workbench.editorAssociations": [
-					{
-						"viewType": "vscode.markdown.preview.editor",
-						"filenamePattern": "*.md"
-					}
-				]
-            }
+				"terminal.integrated.cwd": "${containerWorkspaceFolder}/${containerEnv:ZSH_CWD}"
+			},
+			"extensions": [
+				"github.copilot-chat",
+				"tintinweb.vscode-inline-bookmarks",
+				"DoKca.42-ft-count-line",
+				"kube.42header",
+				"timonwong.shellcheck",
+				"ms-vscode.cpptools",
+				"cschlosser.doxdocgen",
+				"numaru.vscode-ceedling-test-adapter",
+				"hbenl.vscode-test-explorer",
+				"ms-vscode.test-adapter-converter",
+				"llvm-vs-code-extensions.vscode-clangd",
+				"GitHub.github-vscode-theme"
+			],
+			"workbench.editorAssociations":	{
+						"*.md": "vscode.markdown.preview.editor"
+			}
+		}
     }
 }
