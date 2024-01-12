@@ -12,7 +12,7 @@
                 "isDefault": true
             },
             "linux": {
-                "command": "cd ${env:PROJ_DIR} && ceedling release"
+                "command": "cd ${env:PROJ_DIR} && ceedling release && ./${env:EXEC_NAME}"
             }
         },
         {
