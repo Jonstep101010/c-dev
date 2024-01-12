@@ -16,7 +16,6 @@ RUN apt-get install -y --no-install-recommends \
 	clang-${llvm_version} \
 	clangd-${llvm_version} \
     clang-format-${llvm_version} \
-    lldb-${llvm_version} \
     clang-tidy-${llvm_version}
 RUN ln -s /usr/bin/clang-format-${llvm_version} /usr/local/bin/clang-format
 RUN ln -s /usr/bin/clang-tidy-${llvm_version} /usr/local/bin/clang-tidy
