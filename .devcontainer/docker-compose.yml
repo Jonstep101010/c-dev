@@ -8,7 +8,7 @@ services:
       args:
         - base_tag=bookworm
         - llvm_version=16
-        - RUBY_VERSION=3.2.2
+        # - RUBY_VERSION=3.2.2
     volumes:
       - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
     command: sleep infinity

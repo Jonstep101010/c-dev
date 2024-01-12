@@ -12,6 +12,24 @@
 		// "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
 		"source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
 	],
+    // "remoteEnv": {
+    //     "PROJ_DIR": "minishell"
+    // },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/ruby:1": "3.2.2",
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        }
+    },
+    // "postCreateCommand": "sudo gem install ceedling",
 
     // General properties unrelated to the example follow...
     "remoteUser": "vscode",

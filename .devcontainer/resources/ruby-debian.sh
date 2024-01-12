@@ -7,7 +7,7 @@
 # Docs: https://github.com/microsoft/vscode-dev-containers/blob/main/script-library/docs/ruby.md
 # Maintainer: The VS Code and Codespaces Teams
 
-RUBY_VERSION="${VERSION:-"latest"}"
+RUBY_VERSION="${VERSION:-"3.2.2"}"
 
 USERNAME="${USERNAME:-"${_REMOTE_USER:-"automatic"}"}"
 UPDATE_RC="${UPDATE_RC:-"true"}"
