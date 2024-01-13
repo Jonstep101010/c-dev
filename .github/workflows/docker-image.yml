@@ -1,0 +1,19 @@
+name: Docker image
+
+on:
+  push:
+    branches: [ "minishell" ]
+  pull_request:
+    branches: [ "minishell" ]
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: cd .devcontainer; touch ./resources/.env && docker compose up -d
