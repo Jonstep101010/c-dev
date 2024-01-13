@@ -1,0 +1,49 @@
+{
+	"folders": [
+		{
+			"path": "minishell"
+		},
+		{
+			"path": "pipex"
+		},
+		{
+			"path": "."
+		},
+		{
+			"name": "42_minishell_tester",
+			"path": "42_minishell_tester"
+		}
+	],
+	"settings": {
+		"files.eol": "\n",
+		"clangd.detectExtensionConflicts": true,
+		"clangd.path": "/usr/bin/clangd-17",
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"editor.insertSpaces": false,
+		"inline-bookmarks.view.showVisibleFilesOnly": false,
+		"editor.detectIndentation": false,
+		"ceedlingExplorer.shellPath": "/bin/zsh -c /opt/homebrew/lib/ruby/gems/3.2.0/bin/ceedling",
+		"testExplorer.useNativeTesting": true,
+		"files.associations": {
+			"unity.h": "c",
+			"pipex.h": "c",
+			"minishell.h": "c",
+			"libft.h": "c"
+		},
+		"clangd.onConfigChanged": "restart",
+		"clangd.arguments": [
+			"--header-insertion=iwyu"
+		],
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode-remote.remote-containers"
+		]
+	},
+	"workbench.editorAssociations": [
+        {
+            "viewType": "vscode.markdown.preview.editor",
+            "filenamePattern": "*.md"
+        }
+    ],
+}
