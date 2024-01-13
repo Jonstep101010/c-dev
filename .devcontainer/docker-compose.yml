@@ -9,13 +9,13 @@ services:
         - base_tag=bookworm
         - llvm_version=16
     volumes:
-      - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
+      - ../..:/workspaces
     command: sleep infinity
     # depends_on:
     #   - example-service
     env_file:
       # If you need to access the WORKSPACE_* envars in the container
-      - .env
+      - resources/.env
 
   # Another container with access to the workspace files.
   # It serves the workspace files - http://example-service:8000
@@ -26,10 +26,10 @@ services:
   #   volumes:
   #     - ${WORKSPACE_SOURCE:?}:${WORKSPACE_TARGET:?}
 
-volumes:
-  # $WORKSPACE_SOURCE is "devcontainer-volume" when the workspace is in a
-  # volume, and devcontainer-volume is an alias for the actual external volume.
-  # In bind-mount workspaces, it's an empty, unused volume created by compose.
-  devcontainer-volume:
-    name: ${WORKSPACE_CONTAINER_VOLUME_SOURCE:-not-used-in-bind-mount-workspace}
-    external: ${WORKSPACE_IS_CONTAINER_VOLUME:?}
+# volumes:
+#   # $WORKSPACE_SOURCE is "devcontainer-volume" when the workspace is in a
+#   # volume, and devcontainer-volume is an alias for the actual external volume.
+#   # In bind-mount workspaces, it's an empty, unused volume created by compose.
+#   devcontainer-volume:
+#     name: ${WORKSPACE_CONTAINER_VOLUME_SOURCE:-not-used-in-bind-mount-workspace}
+#     external: ${WORKSPACE_IS_CONTAINER_VOLUME:?}

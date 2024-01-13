@@ -3,14 +3,14 @@
     "name": "cproject",
     "dockerComposeFile": "docker-compose.yml",
     "service": "cproject",
-    "workspaceFolder": "/workspace",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     // Generate .devcontainer/.env containing WORKSPACE_* envars for docker-compose.yml
-    "initializeCommand": ".devcontainer/gen-docker-compose-workspace-env.sh --container-workspace-folder '${containerWorkspaceFolder}' --local-workspace-folder '${localWorkspaceFolder}'",
-	"mounts": [
-		// ... existing mounts ...
-		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
-		"source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
-	],
+    // "initializeCommand": ".devcontainer/gen-docker-compose-workspace-env.sh --container-workspace-folder '${containerWorkspaceFolder}' --local-workspace-folder '${localWorkspaceFolder}'",
+	// "mounts": [
+	// 	// ... existing mounts ...
+	// 	"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
+	// 	"source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
+	// ],
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": {
             "installZsh": "true",
