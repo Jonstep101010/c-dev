@@ -15,11 +15,7 @@ Bear-3.1.3.zip
 build
 .cache
 private/
-<<<<<<< HEAD
 minishell
-=======
-modern-cpp-template*
->>>>>>> 1b742324f3b13834c0bd6afd722b3d1cfda87c41
 
 42_minishell_tester/
 
