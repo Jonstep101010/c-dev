@@ -15,4 +15,4 @@ devcontainer:
 
 # initialize goinfre
 init:
-	./resources/scripts/init_docker.sh
+	./resources/.devcontainer/resources/init_docker.sh
