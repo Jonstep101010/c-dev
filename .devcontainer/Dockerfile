@@ -22,6 +22,15 @@ RUN ln -s /usr/bin/clang-tidy-${llvm_version} /usr/local/bin/clang-tidy
 RUN ln -s /usr/bin/clang-${llvm_version} /usr/bin/clang
 RUN ln -s /usr/bin/clangd-${llvm_version} /usr/bin/clangd
 
+# install valgrind 3.22.0 from source
+ARG valgrind
+ADD https://sourceware.org/pub/valgrind/valgrind-3.22.0.tar.bz2 /opt/src/valgrind-3.22.0.tar.bz2
+RUN if [ "$valgrind" = "true" ] ; then \
+		cd /opt/src && tar -xvf valgrind-3.22.0.tar.bz2 ; \
+		apt-get install -y autoconf automake autotools-dev libtool ; \
+		cd /opt/src/valgrind-3.22.0 && ./autogen.sh && ./configure && make && make install ; \
+	fi
+
 # install ceedling for testing
 COPY resources/ceedling-0.32.0-6113249.gem /opt/src/ceedling-0.32.0-6113249.gem
 RUN gem update --system
