@@ -1,0 +1,19 @@
+{
+	"id": "mounts",
+	"version": "0.1",
+	"mounts": [
+		{
+			"source":	"${localEnv:HOME}/.ssh",
+			"target":	"/home/vscode/.ssh",
+			"type": 	"bind"
+		},
+		{
+			"source":	"${localEnv:HOME}/.gnupg",
+			"target":	"/home/vscode/.gnupg",
+			"type": 	"bind"
+		}
+	],
+	"installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils:2"
+    ]
+}
