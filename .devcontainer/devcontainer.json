@@ -3,11 +3,6 @@
     "dockerComposeFile": "docker-compose.yml",
     "service": "cproject",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-	// "mounts": [
-	// 	// ... existing mounts ...
-	// 	"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
-	// 	"source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
-	// ],
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": {
             "installZsh": "true",
@@ -15,7 +10,9 @@
             "userUid": "1000",
             "userGid": "1000",
             "upgradePackages": "true"
-        }
+        },
+		// disable mounts if .gnupg or .ssh do not exist
+		"./mounts": {}
     },
 
     // General properties unrelated to the example follow...

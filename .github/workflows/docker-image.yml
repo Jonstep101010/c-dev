@@ -1,8 +1,6 @@
 name: Docker image
 
 on:
-  push:
-    branches: [ "minishell" ]
   pull_request:
     branches: [ "minishell" ]
   workflow_dispatch:

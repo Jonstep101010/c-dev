@@ -1,0 +1,1 @@
+echo "binding to .ssh in home directory"
