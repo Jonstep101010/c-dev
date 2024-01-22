@@ -1,12 +1,12 @@
 version: "3.9"
 services:
-  cproject:
+  c-dev:
     build:
       context: .
       dockerfile: Dockerfile
       args:
         - base_tag=bookworm
-        - llvm_version=16
+        - llvm_version=17
         - valgrind=true
     volumes:
       - ../..:/workspaces
