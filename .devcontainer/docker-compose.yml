@@ -5,9 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - base_tag=bookworm
-        - llvm_version=17
-        - valgrind=true
+        - base_tag=alpine
     volumes:
       - ../..:/workspaces
     command: sleep infinity

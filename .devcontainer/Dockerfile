@@ -1,41 +1,20 @@
-ARG base_tag=bullseye
-FROM --platform=$TARGETPLATFORM ruby:3.2.2-${base_tag} AS builder_ruby_image
+ARG base_tag=alpine
+FROM --platform=$TARGETPLATFORM ruby:3.2.3-${base_tag}
 
-ARG base_tag=bullseye
-ARG llvm_version=16
-# add apt sources for llvm
-RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-RUN echo "deb http://apt.llvm.org/${base_tag}/ llvm-toolchain-${base_tag}-${llvm_version} main" >> /etc/apt/sources.list.d/llvm.list
-RUN apt-get update --fix-missing && apt-get -y upgrade
-
-# install dependencies
-RUN apt-get install -y wget gnupg gnupg2 gdb
-
-# install & alias llvm tools
-RUN apt-get install -y --no-install-recommends \
-	clang-${llvm_version} \
-	clangd-${llvm_version} \
-    clang-format-${llvm_version} \
-    clang-tidy-${llvm_version}
-RUN ln -s /usr/bin/clang-format-${llvm_version} /usr/local/bin/clang-format
-RUN ln -s /usr/bin/clang-tidy-${llvm_version} /usr/local/bin/clang-tidy
-RUN ln -s /usr/bin/clang-${llvm_version} /usr/bin/clang
-RUN ln -s /usr/bin/clangd-${llvm_version} /usr/bin/clangd
-
-# install valgrind 3.22.0 from source
-ARG valgrind
-ADD https://sourceware.org/pub/valgrind/valgrind-3.22.0.tar.bz2 /opt/src/valgrind-3.22.0.tar.bz2
-RUN if [ "$valgrind" = "true" ] ; then \
-		cd /opt/src && tar -xvf valgrind-3.22.0.tar.bz2 ; \
-		apt-get install -y autoconf automake autotools-dev libtool ; \
-		cd /opt/src/valgrind-3.22.0 && ./autogen.sh && ./configure && make && make install ; \
-	fi
-
-# install ceedling for testing
-COPY resources/ceedling-0.32.0-6113249.gem /opt/src/ceedling-0.32.0-6113249.gem
+RUN apk add --no-cache \
+	build-base \
+	curl \
+	git \
+	libxml2-dev \
+	libxslt-dev \
+	linux-headers \
+	llvm17 \
+	valgrind \
+	clang17-extra-tools
+	
 RUN gem update --system
 RUN gem install ceedling
-RUN cd /opt/src && gem install --local ceedling
-
-# install additional tools...
-RUN apt-get install -y libreadline-dev
+COPY ./resources/ceedling-0.32.0-6113249.gem /tmp
+RUN cd /tmp && gem install --local ceedling
+RUN apk add libhistory ncurses-dev pkgconf
+RUN apk add --no-cache readline readline-dev
