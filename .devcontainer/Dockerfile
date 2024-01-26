@@ -18,3 +18,4 @@ COPY ./resources/ceedling-0.32.0-6113249.gem /tmp
 RUN cd /tmp && gem install --local ceedling
 RUN apk add libhistory ncurses-dev pkgconf
 RUN apk add --no-cache readline readline-dev
+RUN apk add gdb

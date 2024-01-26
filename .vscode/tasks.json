@@ -31,6 +31,14 @@
                 }
             },
             "problemMatcher": []
-        }
+        },
+		{
+			"label": "debug",
+			"type": "shell",
+			"group": "build",
+			"linux": {
+				"command": "cd ${env:PROJ_DIR} && cd include/libft && ceedling release && cd ../.. && ceedling release"
+			}
+		}
     ]
 }
