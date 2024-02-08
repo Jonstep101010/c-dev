@@ -31,6 +31,17 @@
                 }
             },
             "problemMatcher": []
-        }
+        },
+		{
+			"label": "debug",
+			"type": "shell",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"linux": {
+				"command": "cd ${env:PROJ_DIR} && ceedling release"
+			}
+		}
     ]
 }

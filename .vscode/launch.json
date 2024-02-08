@@ -34,7 +34,7 @@
 			},
 		],
         "externalConsole": false, // launch a new console?
-        "preLaunchTask": "build", // name of task to run before this
+        "preLaunchTask": "debug", // name of task to run before this
         // "environment": [
             //     {"name": "env_name", "value": "env_value"},
             // ],

@@ -10,9 +10,9 @@
             "userUid": "1000",
             "userGid": "1000",
             "upgradePackages": "true"
-        },
+        }
 		// disable mounts if .gnupg or .ssh do not exist
-		"./mounts": {}
+		// "./mounts": {}
     },
 
     // General properties unrelated to the example follow...
