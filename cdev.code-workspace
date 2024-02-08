@@ -1,7 +1,15 @@
 {
     "folders": [
+		{
+			"path": "minishell"
+		},
         {
             "path": "."
         },
-    ]
+    ],
+	"settings": {
+		"terminal.integrated.cwd": "./minishell",
+		"clangd.restartAfterCrash": false,
+		"clangd.path": "/usr/bin/clangd"
+	}
 }

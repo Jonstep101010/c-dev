@@ -4,10 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - base_tag=bookworm
-        - llvm_version=17
-        - valgrind=true
     volumes:
       - ../..:/workspaces
     command: sleep infinity

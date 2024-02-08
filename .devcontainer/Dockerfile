@@ -1,11 +1,8 @@
-ARG base_tag=bullseye
-FROM --platform=$TARGETPLATFORM ruby:3.2.2-${base_tag} AS builder_ruby_image
+FROM --platform=$TARGETPLATFORM mcr.microsoft.com/devcontainers/ruby:3.2-bookworm
 
-ARG base_tag=bullseye
-ARG llvm_version=16
 # add apt sources for llvm
 RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-RUN echo "deb http://apt.llvm.org/${base_tag}/ llvm-toolchain-${base_tag}-${llvm_version} main" >> /etc/apt/sources.list.d/llvm.list
+RUN echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-17 main" >> /etc/apt/sources.list.d/llvm.list
 RUN apt-get update --fix-missing && apt-get -y upgrade
 
 # install dependencies
@@ -13,23 +10,14 @@ RUN apt-get install -y wget gnupg gnupg2 gdb
 
 # install & alias llvm tools
 RUN apt-get install -y --no-install-recommends \
-	clang-${llvm_version} \
-	clangd-${llvm_version} \
-    clang-format-${llvm_version} \
-    clang-tidy-${llvm_version}
-RUN ln -s /usr/bin/clang-format-${llvm_version} /usr/local/bin/clang-format
-RUN ln -s /usr/bin/clang-tidy-${llvm_version} /usr/local/bin/clang-tidy
-RUN ln -s /usr/bin/clang-${llvm_version} /usr/bin/clang
-RUN ln -s /usr/bin/clangd-${llvm_version} /usr/bin/clangd
-
-# install valgrind 3.22.0 from source
-ARG valgrind
-ADD https://sourceware.org/pub/valgrind/valgrind-3.22.0.tar.bz2 /opt/src/valgrind-3.22.0.tar.bz2
-RUN if [ "$valgrind" = "true" ] ; then \
-		cd /opt/src && tar -xvf valgrind-3.22.0.tar.bz2 ; \
-		apt-get install -y autoconf automake autotools-dev libtool ; \
-		cd /opt/src/valgrind-3.22.0 && ./autogen.sh && ./configure && make && make install ; \
-	fi
+	clang-17 \
+	clangd-17 \
+    clang-format-17 \
+    clang-tidy-17
+RUN ln -s /usr/bin/clang-format-17 /usr/local/bin/clang-format
+RUN ln -s /usr/bin/clang-tidy-17 /usr/local/bin/clang-tidy
+RUN ln -s /usr/bin/clang-17 /usr/bin/clang
+RUN ln -s /usr/bin/clangd-17 /usr/bin/clangd
 
 # install ceedling for testing
 COPY resources/ceedling-0.32.0-6113249.gem /opt/src/ceedling-0.32.0-6113249.gem

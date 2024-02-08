@@ -37,10 +37,10 @@
 			"type": "shell",
 			"group": {
 				"kind": "build",
-				"isDefault": true
+				"isDefault": false
 			},
 			"linux": {
-				"command": "cd ${env:PROJ_DIR} && ceedling release"
+				"command": "cd ${env:PROJ_DIR} && make"
 			}
 		}
     ]
