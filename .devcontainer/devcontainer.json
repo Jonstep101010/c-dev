@@ -23,7 +23,8 @@
 				"C_Cpp.intelliSenseEngine": "disabled",
                 "ceedlingExplorer.projectPath": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}",
                 "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } },
-				"terminal.integrated.defaultProfile.linux": "zsh"
+				"terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.cwd": "${containerWorkspaceFolder}/${containerEnv:PROJ_DIR}"
 			},
 			"extensions": [
                 "github.copilot-chat",

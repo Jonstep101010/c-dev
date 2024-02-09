@@ -6,7 +6,7 @@ RUN echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-17 main" >> 
 RUN apt-get update --fix-missing && apt-get -y upgrade
 
 # install dependencies
-RUN apt-get install -y wget gnupg gnupg2 gdb
+RUN apt-get install -y wget gnupg gnupg2 gdb autoconf automake autotools-dev libtool
 
 # install & alias llvm tools
 RUN apt-get install -y --no-install-recommends \
@@ -24,6 +24,9 @@ COPY resources/ceedling-0.32.0-6113249.gem /opt/src/ceedling-0.32.0-6113249.gem
 RUN gem update --system
 RUN gem install ceedling
 RUN cd /opt/src && gem install --local ceedling
+ADD https://sourceware.org/pub/valgrind/valgrind-3.22.0.tar.bz2 /opt/src/valgrind-3.22.0.tar.bz2
+RUN cd /opt/src && tar -xvf valgrind-3.22.0.tar.bz2 && \
+	cd /opt/src/valgrind-3.22.0 && ./autogen.sh && ./configure && make && make install
 
 # install additional tools...
 RUN apt-get install -y libreadline-dev
