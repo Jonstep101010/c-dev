@@ -1,8 +1,8 @@
-FROM --platform=$TARGETPLATFORM mcr.microsoft.com/devcontainers/ruby:3.2-bookworm
+FROM --platform=$TARGETPLATFORM mcr.microsoft.com/devcontainers/ruby:2.7-bullseye
 
 # add apt sources for llvm
 RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-RUN echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-17 main" >> /etc/apt/sources.list.d/llvm.list
+RUN echo "deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-17 main" >> /etc/apt/sources.list.d/llvm.list
 RUN apt-get update --fix-missing && apt-get -y upgrade
 
 # install dependencies
@@ -20,10 +20,7 @@ RUN ln -s /usr/bin/clang-17 /usr/bin/clang
 RUN ln -s /usr/bin/clangd-17 /usr/bin/clangd
 
 # install ceedling for testing
-COPY resources/ceedling-0.32.0-6113249.gem /opt/src/ceedling-0.32.0-6113249.gem
-RUN gem update --system
-RUN gem install ceedling
-RUN cd /opt/src && gem install --local ceedling
+RUN gem install ceedling --no-user-install
 ADD https://sourceware.org/pub/valgrind/valgrind-3.22.0.tar.bz2 /opt/src/valgrind-3.22.0.tar.bz2
 RUN cd /opt/src && tar -xvf valgrind-3.22.0.tar.bz2 && \
 	cd /opt/src/valgrind-3.22.0 && ./autogen.sh && ./configure && make && make install
