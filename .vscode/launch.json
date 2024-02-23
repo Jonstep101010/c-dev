@@ -17,7 +17,7 @@
         // },
         "linux": {
             "cwd": "${workspaceFolder}/${env:PROJ_DIR}", // working directory of the target
-            "program": "${workspaceFolder}/${env:PROJ_DIR}/${env:EXEC_NAME}", // name of target to run
+            "program": "${workspaceFolder}/${env:PROJ_DIR}/build/release/${env:EXEC_NAME}", // name of target to run
             "MIMode": "gdb"
 
         },
