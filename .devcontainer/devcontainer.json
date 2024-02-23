@@ -11,7 +11,7 @@
             "userGid": "1000",
             "upgradePackages": "true"
         }
-		// disable mounts if .gnupg or .ssh do not exist
+		// disable mounts if .gnupg or .ssh do not exist or not on school host
 		// "./mounts": {}
     },
 
