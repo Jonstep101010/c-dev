@@ -40,7 +40,7 @@
 				"isDefault": false
 			},
 			"linux": {
-				"command": "cd ${env:PROJ_DIR} && make"
+				"command": "cd ${env:PROJ_DIR} && ceedling release"
 			}
 		}
     ]
