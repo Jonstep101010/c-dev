@@ -27,3 +27,10 @@ RUN cd /opt/src && tar -xvf valgrind-3.22.0.tar.bz2 && \
 
 # install additional tools...
 RUN apt-get install -y libreadline-dev
+RUN	git config --global --add safe.directory /workspaces/c-dev/minishell
+RUN sudo touch /etc/apt/sources.list.d/devdep.list
+RUN echo 'deb http://ftp.de.debian.org/debian bullseye main' | sudo tee -a /etc/apt/sources.list.d/devdep.list
+RUN apt-get update -y
+RUN apt-get install -y bear libclang-rt-17-dev-dbgsym clang-tools-17 libllvm17 llvm-17 llvm-17-dev llvm-17-runtime \
+		libclang-common-17-dev libclang-17-dev libclang1-17 libfuzzer-17-dev libclang-rt-17-dev
+RUN ln -s /usr/bin/llvm-symbolizer-17 /usr/local/bin/llvm-symbolizer
